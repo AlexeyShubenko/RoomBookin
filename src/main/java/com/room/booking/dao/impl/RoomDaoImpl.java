@@ -39,7 +39,7 @@ public class RoomDaoImpl implements RoomDao {
             room.setSize(Integer.valueOf(resultSet.getString("size")));
         }
         }catch (SQLException ex){
-            throw new DaoException(ex);
+            throw new DaoException(ex.getMessage());
         }
         return room;
     }
@@ -52,7 +52,7 @@ public class RoomDaoImpl implements RoomDao {
             preparedStatement.setInt(2,room.getSize());
             preparedStatement.execute();
         }catch (SQLException ex){
-            throw new DbException("Room was not save because of internal error!");
+            throw new DaoException("Room was not save because of internal error!");
         }
     }
 }

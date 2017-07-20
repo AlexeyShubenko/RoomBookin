@@ -3,9 +3,9 @@ package com.room.booking.exceptions;
 /**
  * Created by Alexey on 29.04.2017.
  */
-public class DaoException extends RuntimeException {
+public class EmployeeExistException extends RuntimeException {
 
-    public DaoException(String message){
+    public EmployeeExistException(String message){
         super(message);
     }
 

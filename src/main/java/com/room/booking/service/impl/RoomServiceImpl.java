@@ -3,6 +3,8 @@ package com.room.booking.service.impl;
 import com.room.booking.dao.RoomDao;
 import com.room.booking.dao.impl.RoomDaoImpl;
 import com.room.booking.domain.Room;
+import com.room.booking.exceptions.DaoException;
+import com.room.booking.exceptions.DbException;
 import com.room.booking.exceptions.RoomExistException;
 import com.room.booking.service.RoomService;
 import com.room.booking.service.utils.EntityManager;
@@ -16,20 +18,23 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public void saveRoom(String number, Integer size) {
-        EntityManager.getEntityManager().beginTransaction();
-        Room room = RoomDaoImpl.getRoomDao().getRoomByNumber(number);
-        //if room exist
-        if(Objects.isNull(room)){
-            Room newRoom = new Room();
-            newRoom.setNumber(number);
-            newRoom.setSize(size);
-            //else save
-//            EntityManager.getEntityManager().beginTransaction();
-            RoomDaoImpl.getRoomDao().saveRoom(newRoom);
-
-        }else {
-            throw new RoomExistException("Room already exist!");
+        try {
+            EntityManager.getEntityManager().beginTransaction();
+            Room room = RoomDaoImpl.getRoomDao().getRoomByNumber(number);
+            //if room exist
+            if (Objects.isNull(room)) {
+                Room newRoom = new Room();
+                newRoom.setNumber(number);
+                newRoom.setSize(size);
+                //else save
+                RoomDaoImpl.getRoomDao().saveRoom(newRoom);
+            } else {
+                throw new RoomExistException("Room already exist!");
+            }
+            EntityManager.getEntityManager().commit();
+        }catch (DaoException ex){
+            EntityManager.getEntityManager().rollback();
+            throw new DbException(ex.getMessage());
         }
-        EntityManager.getEntityManager().commit();
     }
 }

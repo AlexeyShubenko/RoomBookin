@@ -9,6 +9,6 @@ import com.room.booking.domain.Room;
 public interface RoomService {
 
 //    Room getRoomByNumber(Integer number);
-void saveRoom(String number, Integer size);
+    void saveRoom(String number, Integer size);
 
 }

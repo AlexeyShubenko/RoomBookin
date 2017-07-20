@@ -8,5 +8,6 @@ import com.room.booking.domain.Employee;
 public interface EmployeeDao {
 
     Employee getEmployeeByLogin(String login);
+    void saveEmployee(Employee employee);
 
 }

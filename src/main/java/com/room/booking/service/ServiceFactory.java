@@ -1,5 +1,6 @@
 package com.room.booking.service;
 
+import com.room.booking.service.impl.EmployeeServiceImpl;
 import com.room.booking.service.impl.LoginServiceImpl;
 import com.room.booking.service.impl.RoomServiceImpl;
 
@@ -12,6 +13,7 @@ public class ServiceFactory {
 
     private LoginService loginService = new LoginServiceImpl();
     private RoomService roomService = new RoomServiceImpl();
+    private EmployeeService employeeService = new EmployeeServiceImpl();
 
     private ServiceFactory(){}
 
@@ -25,5 +27,9 @@ public class ServiceFactory {
 
     public RoomService getRoomService() {
         return roomService;
+    }
+
+    public EmployeeService getEmployeeService() {
+        return employeeService;
     }
 }
