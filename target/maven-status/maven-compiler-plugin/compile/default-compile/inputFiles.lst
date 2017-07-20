@@ -1,15 +1,13 @@
-C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\get\RoomRegistryGetController.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\get\MainGetController.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\get\ControllerGetFactoryImpl.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\service\LoginService.java
-C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\get\EmployeeRegistryGetController.java
-C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\post\RoomRegistryPostController.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\exceptions\UserAlreadyExistException.java
+C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\get\AddEmployeeGetController.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\service\impl\LoginServiceImpl.java
+C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\post\AddRoomPostController.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\servlet\DispatcherServlet.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\service\utils\ConnectionProxy.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\domain\RoomBooking.java
-C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\post\EmployeeRegistryPostController.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\service\ServiceFactory.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\domain\Employee.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\exceptions\DaoException.java
@@ -17,6 +15,7 @@ C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\bookin
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\domain\RegEx.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\Main.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\domain\Room.java
+C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\get\AddRoomGetController.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\dto\RoomDto.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\dao\impl\EmployeeDaoImpl.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\dto\EmployeeDto.java
@@ -24,9 +23,11 @@ C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\bookin
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\get\AdminGetController.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\get\LoginGetController.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\Controller.java
+C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\post\AddEmployeePostController.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\ControllerFactory.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\post\LoginPostController.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\post\ControllerPostFactoryImpl.java
+C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\get\LogOutController.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\exceptions\TransactionException.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\service\utils\EntityManager.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\exceptions\ServiceException.java

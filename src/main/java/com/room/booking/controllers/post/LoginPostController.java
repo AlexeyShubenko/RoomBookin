@@ -20,7 +20,6 @@ public class LoginPostController implements Controller {
 
     private ServiceFactory serviceFactory;
 
-
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         String login = request.getParameter("userlogin");
@@ -38,14 +37,13 @@ public class LoginPostController implements Controller {
         }
         //TODO validation
 
-        //TODO check in db
         serviceFactory = ServiceFactory.getInstance();
         Employee employee= serviceFactory.getLoginService().verifyEmployee(login, password);
         if(Objects.nonNull(employee)){
             //if employee is ADMIN
             if(employee.getRole()== Role.ADMIN) {
                 try {
-                    HttpSession session = request.getSession();
+                    HttpSession session = request.getSession(true);
                     session.setAttribute("admin", employee);
                     response.sendRedirect("/admin");
                 } catch (IOException e) {

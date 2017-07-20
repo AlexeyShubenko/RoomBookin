@@ -17,8 +17,8 @@ public class ControllerPostFactoryImpl implements ControllerFactory {
 
     private ControllerPostFactoryImpl(){
         controllersMap.put("login", new LoginPostController());
-        controllersMap.put("addemployee", new EmployeeRegistryPostController());
-        controllersMap.put("addroom",new RoomRegistryPostController());
+        controllersMap.put("addemployee", new AddEmployeePostController());
+        controllersMap.put("addroom",new AddRoomPostController());
 //        controllersMap.put("", new IndexGetController());
 //        controllersMap.put("roombooking", new MainGetController());
     }

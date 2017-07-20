@@ -18,17 +18,17 @@ public class ControllerGetFactoryImpl implements ControllerFactory {
     private ControllerGetFactoryImpl(){
         controllersMap.put("login", new LoginGetController());
         controllersMap.put("admin", new AdminGetController());
-        controllersMap.put("addemployee", new EmployeeRegistryGetController());
-        controllersMap.put("addroom",new RoomRegistryGetController());
+        controllersMap.put("addemployee", new AddEmployeeGetController());
+        controllersMap.put("addroom",new AddRoomGetController());
 //        controllersMap.put("", new IndexGetController());
         controllersMap.put("roombooking", new MainGetController());
+        controllersMap.put("logout", new LogOutController());
     }
 
     @Override
     public Controller getController(HttpServletRequest request) {
         String uri = request.getRequestURI();
         String[] urls = uri.split("/");
-        System.out.println(urls[urls.length-1]);
         if (urls.length==0){
             return controllersMap.get("login");
         }

@@ -48,6 +48,7 @@ public class EntityManager{
             ConnectionProxy connectionProxy = new ConnectionProxy(connection);
             ///mark connection as in transaction
             connectionProxy.setTransactional(true);
+            threadLocal.set(connectionProxy);
         } catch (SQLException e) {
             e.printStackTrace();
         }

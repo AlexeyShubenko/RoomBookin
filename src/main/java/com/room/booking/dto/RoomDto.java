@@ -7,13 +7,13 @@ import com.room.booking.domain.Room;
  */
 public class RoomDto {
 
-    private Integer number;
+    private String number;
     private Integer size;
 
     public RoomDto() {
     }
 
-    public RoomDto( Integer number, Integer size) {
+    public RoomDto( String number, Integer size) {
         this.number = number;
         this.size = size;
     }
@@ -38,11 +38,11 @@ public class RoomDto {
 
     }
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

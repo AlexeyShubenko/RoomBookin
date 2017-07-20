@@ -8,13 +8,13 @@ import com.room.booking.dto.RoomDto;
 public class Room {
 
     private Long id;
-    private Integer number;
+    private String number;
     private Integer size;
 
     public Room() {
     }
 
-    public Room(Long id, Integer number, Integer size) {
+    public Room(Long id, String number, Integer size) {
         this.id = id;
         this.number = number;
         this.size = size;
@@ -48,11 +48,11 @@ public class Room {
         this.id = id;
     }
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

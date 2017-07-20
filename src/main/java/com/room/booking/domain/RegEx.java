@@ -5,6 +5,13 @@ import java.util.regex.Pattern;
 
 public class RegEx {
 
+	public static boolean isNumber(String number){
+		Pattern p = Pattern.compile("^[0-9]+$");
+		Matcher m = p.matcher(number);
+		return m.matches();
+	}
+
+
 	public static boolean checkValidLogin(String login) {
 		Pattern p = Pattern.compile("^[A-z]+$");
         Matcher m = p.matcher(login);
