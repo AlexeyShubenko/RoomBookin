@@ -54,7 +54,7 @@ public class LoginPostController implements Controller {
                 try {
                     HttpSession session = request.getSession();
                     session.setAttribute("employee", employee);
-                    response.sendRedirect("/bookingPage");
+                    response.sendRedirect("/roombooking");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

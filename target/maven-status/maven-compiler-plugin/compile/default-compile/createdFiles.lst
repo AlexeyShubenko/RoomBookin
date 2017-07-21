@@ -1,4 +1,5 @@
 com\room\booking\controllers\get\MainGetController.class
+com\room\booking\exceptions\EmployeeExistException.class
 com\room\booking\controllers\get\ControllerGetFactoryImpl.class
 com\room\booking\controllers\post\ControllerPostFactoryImpl.class
 com\room\booking\dao\impl\EmployeeDaoImpl.class
@@ -17,9 +18,11 @@ com\room\booking\service\impl\RoomServiceImpl.class
 com\room\booking\dao\EmployeeDao.class
 com\room\booking\Main.class
 com\room\booking\domain\Room.class
+com\room\booking\service\EmployeeService.class
 com\room\booking\controllers\ControllerFactory.class
 com\room\booking\controllers\get\AddEmployeeGetController.class
 com\room\booking\dto\EmployeeDto$Builder.class
+com\room\booking\service\impl\EmployeeServiceImpl.class
 com\room\booking\dto\RoomDto$Builder.class
 com\room\booking\controllers\get\LoginGetController.class
 com\room\booking\service\utils\ConnectionProxy.class
@@ -38,7 +41,6 @@ com\room\booking\dao\impl\RoomDaoImpl.class
 com\room\booking\exceptions\ServiceException.class
 com\room\booking\controllers\post\LoginPostController.class
 com\room\booking\domain\RoomBooking.class
-com\room\booking\exceptions\UserExistException.class
 com\room\booking\domain\Employee$Builder.class
 com\room\booking\domain\Room$Builder.class
 com\room\booking\exceptions\DbException.class
