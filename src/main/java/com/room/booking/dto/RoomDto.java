@@ -7,23 +7,22 @@ import com.room.booking.domain.Room;
  */
 public class RoomDto {
 
-    private String number;
+    private String name;
     private Integer size;
 
     public RoomDto() {
     }
 
-    public RoomDto( String number, Integer size) {
-        this.number = number;
+    public RoomDto( String name, Integer size) {
+        this.name = name;
         this.size = size;
     }
 
     public static class Builder{
-
         RoomDto roomDto = new RoomDto();
 
         public Builder setNumber(Room room){
-            roomDto.setNumber(room.getNumber());
+            roomDto.setName(room.getName());
             return this;
         }
 
@@ -38,12 +37,12 @@ public class RoomDto {
 
     }
 
-    public String getNumber() {
-        return number;
+    public String getName() {
+        return name;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setName(String number) {
+        this.name = number;
     }
 
     public Integer getSize() {
@@ -57,7 +56,7 @@ public class RoomDto {
     @Override
     public String toString() {
         return "Room{" +
-                ", number=" + number +
+                ", number=" + name +
                 ", size=" + size +
                 '}';
     }

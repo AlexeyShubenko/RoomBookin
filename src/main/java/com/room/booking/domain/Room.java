@@ -8,15 +8,15 @@ import com.room.booking.dto.RoomDto;
 public class Room {
 
     private Long id;
-    private String number;
+    private String name;
     private Integer size;
 
     public Room() {
     }
 
-    public Room(Long id, String number, Integer size) {
+    public Room(Long id, String name, Integer size) {
         this.id = id;
-        this.number = number;
+        this.name = name;
         this.size = size;
     }
 
@@ -25,7 +25,7 @@ public class Room {
         Room room = new Room();
 
         public Builder setNumber(RoomDto roomDto){
-            room.setNumber(roomDto.getNumber());
+            room.setName(roomDto.getName());
             return this;
         }
 
@@ -48,12 +48,12 @@ public class Room {
         this.id = id;
     }
 
-    public String getNumber() {
-        return number;
+    public String getName() {
+        return name;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setName(String number) {
+        this.name = number;
     }
 
     public Integer getSize() {
@@ -68,7 +68,7 @@ public class Room {
     public String toString() {
         return "Room{" +
                 "id=" + id +
-                ", number=" + number +
+                ", number=" + name +
                 ", size=" + size +
                 '}';
     }

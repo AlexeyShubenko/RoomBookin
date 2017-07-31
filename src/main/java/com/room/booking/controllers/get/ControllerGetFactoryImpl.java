@@ -21,8 +21,9 @@ public class ControllerGetFactoryImpl implements ControllerFactory {
         controllersMap.put("addemployee", new AddEmployeeGetController());
         controllersMap.put("addroom",new AddRoomGetController());
 //        controllersMap.put("", new IndexGetController());
-        controllersMap.put("roombooking", new MainGetController());
         controllersMap.put("logout", new LogOutController());
+        controllersMap.put("roombooking", new RoomBookingController());
+        controllersMap.put("getAllRooms", new AllBooksGetController());
     }
 
     @Override

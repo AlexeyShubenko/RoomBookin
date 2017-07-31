@@ -1,5 +1,5 @@
-com\room\booking\controllers\get\MainGetController.class
 com\room\booking\exceptions\EmployeeExistException.class
+com\room\booking\controllers\get\AllBooksGetController.class
 com\room\booking\controllers\get\ControllerGetFactoryImpl.class
 com\room\booking\controllers\post\ControllerPostFactoryImpl.class
 com\room\booking\dao\impl\EmployeeDaoImpl.class
@@ -7,6 +7,7 @@ com\room\booking\service\impl\LoginServiceImpl.class
 com\room\booking\dto\EmployeeDto.class
 com\room\booking\service\LoginService.class
 com\room\booking\exceptions\TransactionException.class
+com\room\booking\controllers\get\RoomBookingController.class
 com\room\booking\controllers\post\AddRoomPostController.class
 com\room\booking\domain\Employee.class
 com\room\booking\servlet\DispatcherServlet.class
