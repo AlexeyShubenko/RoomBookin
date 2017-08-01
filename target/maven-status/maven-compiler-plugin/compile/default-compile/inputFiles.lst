@@ -39,5 +39,6 @@ C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\bookin
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\exceptions\TransactionException.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\service\impl\EmployeeServiceImpl.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\service\utils\EntityManager.java
+C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\controllers\post\DetailRoomInfoController.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\dao\impl\RoomDaoImpl.java
 C:\Users\Alexey\IdeaProjects\RoomBookingOnServlets\src\main\java\com\room\booking\exceptions\ServiceException.java

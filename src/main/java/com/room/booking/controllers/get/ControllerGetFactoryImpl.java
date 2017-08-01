@@ -2,6 +2,8 @@ package com.room.booking.controllers.get;
 
 import com.room.booking.controllers.Controller;
 import com.room.booking.controllers.ControllerFactory;
+import com.room.booking.controllers.post.DetailRoomInfoController;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;

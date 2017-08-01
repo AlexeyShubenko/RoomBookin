@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface RoomDao {
 
-    Room getRoomByNumber(String number);
+    Room getRoomByName(String name);
     void saveRoom(Room room);
 
     List<Room> getAllRooms();

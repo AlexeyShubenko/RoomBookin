@@ -19,9 +19,10 @@ public class ControllerPostFactoryImpl implements ControllerFactory {
         controllersMap.put("login", new LoginPostController());
         controllersMap.put("addemployee", new AddEmployeePostController());
         controllersMap.put("addroom",new AddRoomPostController());
+        controllersMap.put("getRoomDetail", new DetailRoomInfoController());
 //        controllersMap.put("", new IndexGetController());
 //        controllersMap.put("roombooking", new MainGetController());
-    }
+}
 
     @Override
     public Controller getController(HttpServletRequest request) {

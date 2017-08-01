@@ -2,7 +2,6 @@ package com.room.booking.controllers.get;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.room.booking.controllers.Controller;
-import com.room.booking.domain.Room;
 import com.room.booking.dto.RoomDto;
 import com.room.booking.service.ServiceFactory;
 
@@ -20,12 +19,6 @@ public class AllBooksGetController implements Controller {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //Received json from request
-//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(request.getInputStream()));
-//        String dataJson = "";
-//        if(bufferedReader != null){
-//            dataJson = bufferedReader.readLine();
-//        }
         ObjectMapper mapper = new ObjectMapper();
         //Received all rooms from database
         List<RoomDto> rooms = serviceFactory.getInstance().getRoomService().getAllRooms();

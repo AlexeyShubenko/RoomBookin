@@ -31,11 +31,11 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public Room getRoomByNumber(String number) {
+    public Room getRoomByName(String name) {
         Room room = null;
         try(ConnectionProxy connectionProxy = EntityManager.getEntityManager().getConnection()){
         PreparedStatement preparedStatement = connectionProxy.createPreparedStatement(selectRoomByNum);
-        preparedStatement.setString(1,number);
+        preparedStatement.setString(1,name);
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()){
             room = new Room();

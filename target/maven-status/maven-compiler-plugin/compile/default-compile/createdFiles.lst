@@ -19,6 +19,7 @@ com\room\booking\service\impl\RoomServiceImpl.class
 com\room\booking\dao\EmployeeDao.class
 com\room\booking\Main.class
 com\room\booking\domain\Room.class
+com\room\booking\controllers\post\DetailRoomInfoController.class
 com\room\booking\service\EmployeeService.class
 com\room\booking\controllers\ControllerFactory.class
 com\room\booking\controllers\get\AddEmployeeGetController.class

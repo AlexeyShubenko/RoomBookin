@@ -20,14 +20,14 @@ import java.util.Objects;
 public class RoomServiceImpl implements RoomService {
 
     @Override
-    public void saveRoom(String number, Integer size) {
+    public void saveRoom(String name, Integer size) {
         try {
             EntityManager.getEntityManager().beginTransaction();
-            Room room = RoomDaoImpl.getRoomDao().getRoomByNumber(number);
+            Room room = RoomDaoImpl.getRoomDao().getRoomByName(name);
             //if room exist
             if (Objects.isNull(room)) {
                 Room newRoom = new Room();
-                newRoom.setName(number);
+                newRoom.setName(name);
                 newRoom.setSize(size);
                 //else save
                 RoomDaoImpl.getRoomDao().saveRoom(newRoom);

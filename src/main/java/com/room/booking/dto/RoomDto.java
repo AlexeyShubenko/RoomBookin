@@ -56,7 +56,7 @@ public class RoomDto {
     @Override
     public String toString() {
         return "Room{" +
-                ", number=" + name +
+                "name=" + name +
                 ", size=" + size +
                 '}';
     }
