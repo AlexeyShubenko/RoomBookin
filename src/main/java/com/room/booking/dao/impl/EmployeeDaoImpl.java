@@ -38,6 +38,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 employee = new Employee();
+                employee.setId(resultSet.getLong("id"));
                 employee.setName(resultSet.getString("name"));
                 employee.setLogin(resultSet.getString("login"));
                 employee.setPassword(resultSet.getString("password"));

@@ -11,6 +11,6 @@ import java.util.List;
 public interface RoomBookingService {
 
     List<RoomBookingDto> allRoomBookingsOfRoom(RoomAdditionalInfo additionalInfo);
-
+    void saveRoomBooking(RoomBookingDto roomBookingDto);
 
 }

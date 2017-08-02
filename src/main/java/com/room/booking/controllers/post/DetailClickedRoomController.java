@@ -42,6 +42,7 @@ public class DetailClickedRoomController implements Controller {
         try {
             RoomAdditionalInfo.checkEnteredDate(additionalInfo);
         }catch (DateTimeException ex){
+            request.setAttribute("dateError","Check entered day of month!");
             RequestDispatcher rd = request.getRequestDispatcher("/roombooking.jsp");
             try {
                 rd.forward(request,response);

@@ -9,6 +9,7 @@ com\room\booking\service\LoginService.class
 com\room\booking\controllers\post\DetailClickedRoomController.class
 com\room\booking\exceptions\TransactionException.class
 com\room\booking\controllers\get\RoomBookingController.class
+com\room\booking\exceptions\RoomAlreadyBookedOnThisTimeException.class
 com\room\booking\domain\Employee.class
 com\room\booking\servlet\DispatcherServlet.class
 com\room\booking\service\utils\EntityManager.class
@@ -30,6 +31,7 @@ com\room\booking\exceptions\RoomExistException.class
 com\room\booking\exceptions\DbException.class
 com\room\booking\controllers\post\AddRoomPostController.class
 com\room\booking\Main.class
+com\room\booking\controllers\post\SaveRoomBookingPostController.class
 com\room\booking\domain\Room.class
 com\room\booking\controllers\post\DetailRoomInfoController.class
 com\room\booking\controllers\ControllerFactory.class

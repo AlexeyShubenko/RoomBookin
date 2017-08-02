@@ -2,12 +2,15 @@ package com.room.booking.dao.impl;
 
 import com.room.booking.dao.RoomBookingDao;
 import com.room.booking.domain.RoomBooking;
+import com.room.booking.dto.RoomBookingDto;
+import com.room.booking.exceptions.DaoException;
 import com.room.booking.service.utils.ConnectionProxy;
 import com.room.booking.service.utils.EntityManager;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +22,8 @@ public class RoomBookingDaoImpl implements RoomBookingDao {
 
     private static RoomBookingDaoImpl instance = new RoomBookingDaoImpl();
     private final String getAllRoomBookingByRoomNameQuery = "select * from roombooking where room_id=?";
+    private final String insertRoomBookingQuery = "insert into roombooking (room_id,empl_id,fromtime,totime) values(?,?,?,?)";
+
 
 
     private RoomBookingDaoImpl(){}
@@ -49,5 +54,19 @@ public class RoomBookingDaoImpl implements RoomBookingDao {
         }
 
         return roomBookings;
+    }
+
+    @Override
+    public void saveRoomBooking(Long room_id, Long empl_id, LocalDateTime fromTime, LocalDateTime toTime) {
+        try(ConnectionProxy connectionProxy = EntityManager.getEntityManager().getConnection()){
+            PreparedStatement preparedStatement = connectionProxy.createPreparedStatement(insertRoomBookingQuery);
+            preparedStatement.setLong(1,room_id);
+            preparedStatement.setLong(2,empl_id);
+            preparedStatement.setTimestamp(3, Timestamp.valueOf(fromTime));
+            preparedStatement.setTimestamp(4, Timestamp.valueOf(toTime));
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new DaoException("Employee was not save because of internal error!");
+        }
     }
 }

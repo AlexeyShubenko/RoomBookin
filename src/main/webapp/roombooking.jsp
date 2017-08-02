@@ -38,7 +38,7 @@
             var roomName = document.getElementById("roomBookingForm").getAttribute("roomName");
             var day = $("input#day").val();
             var month = $("select#months option:selected").text();
-
+            console.log(day);
             if (isNaN(day) || day == "" || day>31 ||day<0) {
                 alert("Fill in all the fields correctly");
             } else {
@@ -67,7 +67,7 @@
                             $("div#roomDetail").append($("<div>" + data[i].fromTime + " - " + data[i].toTime + "</div>"));
                         }
                     },
-                    error:function () {
+                    error:function (jqXHR, textStatus, errorThrown) {
                         alert("Check entered day of month!");
                     }
                 });
@@ -92,10 +92,13 @@
         }
 
         function bookTheRoom() {
+            var roomName = document.getElementById("roomBookingForm").getAttribute("roomName");
             var fromTimeHour = $("input#fromTimeHour").val();
             var fromTimeMin = $("input#fromTimeMin").val();
             var toTimeHour = $("input#toTimeHour").val();
             var toTimeMin = $("input#toTimeMin").val();
+            var day = $("input#day").val();
+            var month = $("select#months option:selected").text();
 
             if(isNaN(fromTimeHour) || isNaN(fromTimeMin) || isNaN(toTimeHour) || isNaN(toTimeMin) ||
                 fromTimeHour=="" || fromTimeMin=="" || toTimeHour=="" || toTimeMin==""){
@@ -106,10 +109,15 @@
                     alert("Incorrect data format!");
                   }
             else{
+                var fromTime = fromTimeHour+":"+fromTimeMin;
+                var toTime = toTimeHour+":"+toTimeMin;
                 //if all entered data is correct
                 data = {};
-                data["fromTime"] = fromTimeHour+":"+fromTimeMin;
-                data["toTime"] = toTimeHour+":"+toTimeMin;
+                data["fromTime"] = fromTime
+                data["toTime"] = toTime;
+                data["roomName"] = roomName;
+                data["day"] = day;
+                data["month"] = month;
                 console.log(data);
                 $.ajax({
                     type: 'POST',
@@ -118,7 +126,11 @@
                     data: JSON.stringify(data),
                     contentType: 'application/json',
                     success: function (data) {
-
+                        alert("Room was booked on time: " + fromTime + " - " + toTime);
+                        hideElement("booking");
+                    },
+                    error:function () {
+                        alert("Room already booked on this time!")
                     }
                 });
 
@@ -146,6 +158,10 @@
 </head>
 
 <body>
+
+<div>
+    ${dateError}
+</div>
 
     <h1>Room Booking page</h1>
 
@@ -196,11 +212,11 @@
                 </div>
                 Book the room:
                 </br>
-                from: <input type="text" maxlength="2" size="2" id="fromTimeHour"/> .
-                      <input type="text" maxlength="2" size="2" id="fromTimeMin"/>
+                from: <input type="text" minlength="2" maxlength="2" size="2" placeholder="06" id="fromTimeHour"/> .
+                      <input type="text" minlength="2" maxlength="2" size="2" placeholder="05" id="fromTimeMin"/>
                  </br>
-                to:   <input type="text" maxlength="2" size="2" id="toTimeHour"/> .
-                      <input type="text" maxlength="2" size="2" id="toTimeMin"/>
+                to:   <input type="text" minlength="2" maxlength="2" size="2" placeholder="07" id="toTimeHour"/> .
+                      <input type="text" minlength="2" maxlength="2" size="2" placeholder="05"id="toTimeMin"/>
                 <div>
                     <input type="button" value="Book the room" onclick="bookTheRoom()"/>
                 </div>
