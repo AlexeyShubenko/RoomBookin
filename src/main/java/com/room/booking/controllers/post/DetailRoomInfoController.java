@@ -30,7 +30,6 @@ public class DetailRoomInfoController implements Controller{
         }
         //json -> object
         RoomDto roomDto = mapper.readValue(roomJson,RoomDto.class);
-        System.out.println(roomDto.toString());
         //Received all booking of room
 //        List<RoomDto> rooms = serviceFactory.getInstance().getRoomService().getAllRooms();
         response.setContentType("application/json");

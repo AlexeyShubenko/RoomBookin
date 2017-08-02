@@ -127,16 +127,17 @@
                     contentType: 'application/json',
                     success: function (data) {
                         alert("Room was booked on time: " + fromTime + " - " + toTime);
-                        hideElement("booking");
+                        document.getElementById("fromTimeHour").value="";
+                        document.getElementById("fromTimeMin").value="";
+                        document.getElementById("toTimeHour").value="";
+                        document.getElementById("toTimeMin").value="";
+                        showAllBookingsOfRoom();
                     },
                     error:function () {
-                        alert("Room already booked on this time!")
+                        alert("Room already booked on this time!");
                     }
                 });
-
             }
-
-
         }
 
         function hideElement(elementId) {
@@ -152,7 +153,6 @@
         function clearPreviousInformation(elementId) {
             document.getElementById(elementId).innerHTML = "";
         }
-
 
     </script>
 </head>

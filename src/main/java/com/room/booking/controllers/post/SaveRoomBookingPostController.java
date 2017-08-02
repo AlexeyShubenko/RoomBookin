@@ -43,13 +43,16 @@ public class SaveRoomBookingPostController implements Controller {
             try{
                 serviceFactory.getRoomBookingService().saveRoomBooking(roomBookingDto);
             }catch (RoomAlreadyBookedOnThisTimeException ex){
-                RequestDispatcher rd = request.getRequestDispatcher("/roombooking.jsp");
-                try {
-                    rd.forward(request,response);
-                } catch (ServletException e) {
-                    e.printStackTrace();
-                }
+                response.sendRedirect("/roombooking.jsp");
+//                RequestDispatcher rd = request.getRequestDispatcher("/roombooking.jsp");
+//                try {
+//                    rd.forward(request,response);
+//                } catch (ServletException e) {
+//                    e.printStackTrace();
+//                }
             }
+            response.setContentType("application/json");
+            mapper.writeValue(response.getOutputStream(),roomBookingDto);
 
         }else {
             try {

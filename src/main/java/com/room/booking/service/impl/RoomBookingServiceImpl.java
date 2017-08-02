@@ -115,6 +115,7 @@ public class RoomBookingServiceImpl implements RoomBookingService {
                     break;
                 }
             }
+
             if (isBooked) {
                 throw new RoomAlreadyBookedOnThisTimeException();
             } else {
@@ -135,6 +136,7 @@ public class RoomBookingServiceImpl implements RoomBookingService {
                 RoomBookingDaoImpl.getInstance().saveRoomBooking(room.getId(), employee.getId(), fromTime, toTime);
             }
             EntityManager.getEntityManager().commit();
+            isBooked=false;
         }catch (DaoException ex){
             EntityManager.getEntityManager().rollback();
         }
