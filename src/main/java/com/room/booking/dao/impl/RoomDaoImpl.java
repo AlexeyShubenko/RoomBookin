@@ -39,6 +39,7 @@ public class RoomDaoImpl implements RoomDao {
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()){
             room = new Room();
+            room.setId(resultSet.getLong("id"));
             room.setName(resultSet.getString("name"));
             room.setSize(Integer.valueOf(resultSet.getString("size")));
         }

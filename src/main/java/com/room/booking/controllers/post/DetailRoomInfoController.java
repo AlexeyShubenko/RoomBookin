@@ -36,6 +36,7 @@ public class DetailRoomInfoController implements Controller{
         response.setContentType("application/json");
         //send data to client
 //        mapper.writeValue(response.getOutputStream(),rooms);
+        //TODO retur roombooking
     }
 
 }

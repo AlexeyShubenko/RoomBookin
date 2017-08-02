@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
-    <title>Admin Page</title>
+    <title>Room Booking Page</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <%--<script language="JavaScript" src="static/js/showAllRooms.js"></script>--%>
+
     <script>
         $(document).ready(function () {
             //show all rooms
@@ -27,8 +27,52 @@
             });
             hideElement("roomBookingForm");
 
+//            $("input#showAllBookingsOfRoom").click(function () {
+//            });
+
         });
 
+        function showAllBookingsOfRoom() {
+            hideElement("booking");
+
+            var roomName = document.getElementById("roomBookingForm").getAttribute("roomName");
+            var day = $("input#day").val();
+            var month = $("select#months option:selected").text();
+
+            if (isNaN(day) || day == "" || day>31 ||day<0) {
+                alert("Fill in all the fields correctly");
+            } else {
+                //json for sending to server
+                var data = {};
+                data["roomName"] = roomName;
+                data["day"] = day;
+                data["month"] = month;
+                clearPreviousInformation("roomIsNotBooked");
+                clearPreviousInformation("roomDetail");
+                $.ajax({
+                    type: 'POST',
+                    url: 'getDetailOfClickedRoom',
+                    dataType: 'json',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    success: function (data) {
+                        //show booking form
+                        showElement("booking");
+                        if(data.length==0){
+                            $("div#roomIsNotBooked").append($("<div>" + "Room is not book today!" + "</div>"));
+                        }
+//                    fill div with all bookings of this room
+                        $("div#roomDetail").append($("<div>" + "Room is booked: " + "</div>"));
+                        for(var i=0; i< data.length; i++){
+                            $("div#roomDetail").append($("<div>" + data[i].fromTime + " - " + data[i].toTime + "</div>"));
+                        }
+                    },
+                    error:function () {
+                        alert("Check entered day of month!");
+                    }
+                });
+            }
+        }
 
         function showRoomDetail(event) {
 //            show room booking form
@@ -36,6 +80,8 @@
 //            room information
             var roomName = event.currentTarget.name;
             var roomSize = event.currentTarget.size;
+            //set attribute to room booking form
+            document.getElementById("roomBookingForm").setAttribute("roomName",roomName);
 
             clearPreviousInformation("roomBookingHead");
             $("div#roomBookingHead").append($("<div>" + "Book the room: " + "</div>"));
@@ -45,39 +91,41 @@
             hideElement("booking");
         }
 
-        function showAllBookingsOfRoom() {
-            hideElement("booking");
+        function bookTheRoom() {
+            var fromTimeHour = $("input#fromTimeHour").val();
+            var fromTimeMin = $("input#fromTimeMin").val();
+            var toTimeHour = $("input#toTimeHour").val();
+            var toTimeMin = $("input#toTimeMin").val();
 
-            var day = $("input#day").val();
-            if(isNaN(day) || day==""){
-                alert("Enter field day correctly");
-            }else {
-//            show booking form
-                showElement("booking");
-                var roomName = event.currentTarget.name;
-                var roomSize = event.currentTarget.size;
-
-                //            json for sending to server
-                var data = {};
-                data["name"] = roomName;
-                data["size"] = roomSize;
+            if(isNaN(fromTimeHour) || isNaN(fromTimeMin) || isNaN(toTimeHour) || isNaN(toTimeMin) ||
+                fromTimeHour=="" || fromTimeMin=="" || toTimeHour=="" || toTimeMin==""){
+                alert("Fill in all the fields correctly");
+            }else if(fromTimeHour > 24 || toTimeHour > 24 || fromTimeMin > 60 || toTimeMin > 60
+                || fromTimeHour>toTimeHour
+                || fromTimeHour < 0 || toTimeHour < 0 || fromTimeMin < 0 || toTimeMin < 0){
+                    alert("Incorrect data format!");
+                  }
+            else{
+                //if all entered data is correct
+                data = {};
+                data["fromTime"] = fromTimeHour+":"+fromTimeMin;
+                data["toTime"] = toTimeHour+":"+toTimeMin;
+                console.log(data);
                 $.ajax({
-                    type: "POST",
-                    url: "getRoomDetail",
+                    type: 'POST',
+                    url: 'saveRoomBooking',
                     dataType: 'json',
                     data: JSON.stringify(data),
                     contentType: 'application/json',
                     success: function (data) {
-//                    fill div with all bookings of this room
-//                    $("div#roomdetail").append($("<div>" + "Room detail " + "</div>"));
-//                    $("div#roomdetail").append($("<div>" + "Name: " + data.name + "</div>"));
-//                    $("div#roomdetail").append($("<div>" + "Size: " + data.size + "</div>"));
+
                     }
                 });
+
             }
 
-        }
 
+        }
 
         function hideElement(elementId) {
             var divId = "div#"+elementId;
@@ -92,16 +140,11 @@
         function clearPreviousInformation(elementId) {
             document.getElementById(elementId).innerHTML = "";
         }
-//        function showMonth() {
-////            $("input#order").click(function () {
-//                console.log("CLICK")
-//                var bookTitle = $("select#months option:selected").text();
-//                console.log(bookTitle);
-////            });
-//        }
+
 
     </script>
 </head>
+
 <body>
 
     <h1>Room Booking page</h1>
@@ -117,11 +160,13 @@
         <div id="allRooms"></div>
     </div>
 
-
     <%--RoomBooking part--%>
     <div id="roomBookingForm">
         <div>
             <div id="roomBookingHead">
+            </div>
+            <div>
+                ${dateError}
             </div>
                 Day: <input type="text" maxlength="2" size="2" id="day"/>
                 Month: <select id="months">
@@ -139,9 +184,14 @@
                             <option>DECEMBER</option>
                         </select>
             </br>
-                <input type="button" value="Show Information" onclick="showAllBookingsOfRoom()"/>
+                <input type="submit" value="Show Information" onclick="showAllBookingsOfRoom()" />
+            <%--id="showAllBookingsOfRoom"  onclick="showAllBookingsOfRoom()" --%>
 
             <div id="booking">
+
+                <div id="roomIsNotBooked">
+                </div>
+
                 <div id="roomDetail">
                 </div>
                 Book the room:
@@ -149,8 +199,11 @@
                 from: <input type="text" maxlength="2" size="2" id="fromTimeHour"/> .
                       <input type="text" maxlength="2" size="2" id="fromTimeMin"/>
                  </br>
-                to: <input type="text" maxlength="2" size="2" id="toTimeHour"/> .
-                    <input type="text" maxlength="2" size="2" id="toTimeMin"/>
+                to:   <input type="text" maxlength="2" size="2" id="toTimeHour"/> .
+                      <input type="text" maxlength="2" size="2" id="toTimeMin"/>
+                <div>
+                    <input type="button" value="Book the room" onclick="bookTheRoom()"/>
+                </div>
             </div>
         </div>
 

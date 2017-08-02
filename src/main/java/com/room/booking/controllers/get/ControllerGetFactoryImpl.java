@@ -2,8 +2,6 @@ package com.room.booking.controllers.get;
 
 import com.room.booking.controllers.Controller;
 import com.room.booking.controllers.ControllerFactory;
-import com.room.booking.controllers.post.DetailRoomInfoController;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,13 +24,13 @@ public class ControllerGetFactoryImpl implements ControllerFactory {
         controllersMap.put("logout", new LogOutController());
         controllersMap.put("roombooking", new RoomBookingController());
         controllersMap.put("getAllRooms", new AllBooksGetController());
+//        controllersMap.put("getDetailOfClickedRoom", new DetailClickedRoomController());
     }
 
     @Override
     public Controller getController(HttpServletRequest request) {
         String uri = request.getRequestURI();
-        String[] urls = uri.split("/");
-        if (urls.length==0){
+        String[] urls = uri.split("/");if (urls.length==0){
             return controllersMap.get("login");
         }
         //return last

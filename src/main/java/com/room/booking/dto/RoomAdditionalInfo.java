@@ -1,5 +1,9 @@
 package com.room.booking.dto;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.Month;
+
 /**
  * Created by Alexey on 01.08.2017.
  */
@@ -31,5 +35,18 @@ public class RoomAdditionalInfo {
 
     public void setDay(Integer day) {
         this.day = day;
+    }
+
+    @Override
+    public String toString() {
+        return "RoomAdditionalInfo{" +
+                "roomName='" + roomName + '\'' +
+                ", month='" + month + '\'' +
+                ", day=" + day +
+                '}';
+    }
+
+    public static void checkEnteredDate(RoomAdditionalInfo additionalInfo) throws DateTimeException {
+        LocalDate localDate = LocalDate.of(LocalDate.now().getYear(), Month.valueOf(additionalInfo.getMonth()), additionalInfo.getDay());
     }
 }
