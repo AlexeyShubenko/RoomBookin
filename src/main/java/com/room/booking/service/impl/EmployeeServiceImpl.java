@@ -7,7 +7,6 @@ import com.room.booking.exceptions.DaoException;
 import com.room.booking.exceptions.DbException;
 import com.room.booking.exceptions.EmployeeExistException;
 import com.room.booking.service.EmployeeService;
-import com.room.booking.service.ServiceFactory;
 import com.room.booking.service.utils.EntityManager;
 
 import java.util.Objects;

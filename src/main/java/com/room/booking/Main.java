@@ -23,8 +23,6 @@ public class Main {
         LocalDateTime d1 = LocalDateTime.of(2017,01,05,8,05);
 //        System.out.println(d1.getMonth().toString().equals("JANUARY"));
 //        System.out.println(d1.toString());
-        LocalTime time = LocalTime.parse("08:5");
-        System.out.println(time.toString());
 //        LocalDateTime d2 = LocalDateTime.of(2017,1,31,12,30);
 //        System.out.println(d1.isAfter(d2));
 //        LocalTime t = LocalTime.of(14,54);

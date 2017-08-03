@@ -23,14 +23,6 @@ public class LogOutController implements Controller{
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        Employee admin = (Employee) session.getAttribute("admin");
-//        Employee user = (Employee) session.getAttribute("user");
-//        if(Objects.nonNull(admin)){
-//            session.removeAttribute("admin");
-//        }
-//        if(Objects.nonNull(user)){
-//            session.removeAttribute("user");
-//        }
     }
 
 }

@@ -14,21 +14,19 @@ public class ControllerGetFactoryImpl implements ControllerFactory {
     private static ControllerFactory instance = new ControllerGetFactoryImpl();
     private Map<String, Controller> controllersMap = new HashMap<>();
 
-
     private ControllerGetFactoryImpl(){
         controllersMap.put("login", new LoginGetController());
         controllersMap.put("admin", new AdminGetController());
         controllersMap.put("addemployee", new AddEmployeeGetController());
         controllersMap.put("addroom",new AddRoomGetController());
-//        controllersMap.put("", new IndexGetController());
         controllersMap.put("logout", new LogOutController());
         controllersMap.put("roombooking", new RoomBookingController());
         controllersMap.put("getAllRooms", new AllBooksGetController());
-//        controllersMap.put("getDetailOfClickedRoom", new DetailClickedRoomController());
     }
 
     @Override
     public Controller getController(HttpServletRequest request) {
+        //TODO if utl is not exist
         String uri = request.getRequestURI();
         String[] urls = uri.split("/");if (urls.length==0){
             return controllersMap.get("login");

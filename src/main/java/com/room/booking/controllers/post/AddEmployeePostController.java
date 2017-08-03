@@ -2,7 +2,6 @@ package com.room.booking.controllers.post;
 
 import com.room.booking.controllers.Controller;
 import com.room.booking.domain.Employee;
-import com.room.booking.domain.RegEx;
 import com.room.booking.exceptions.DbException;
 import com.room.booking.exceptions.EmployeeExistException;
 import com.room.booking.service.ServiceFactory;
@@ -19,6 +18,9 @@ import java.util.Objects;
  * Created by Alexey on 19.07.2017.
  */
 public class AddEmployeePostController implements Controller {
+
+    private ServiceFactory serviceFactory = ServiceFactory.getInstance();
+
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
@@ -49,7 +51,7 @@ public class AddEmployeePostController implements Controller {
 
         //save in DB
         try {
-            ServiceFactory.getInstance().getEmployeeService().saveEmployee(name,login,password);
+            serviceFactory.getEmployeeService().saveEmployee(name,login,password);
         }catch (EmployeeExistException emplEx){
             try {
                 request.setAttribute("error", emplEx.getMessage());
@@ -77,4 +79,5 @@ public class AddEmployeePostController implements Controller {
         }
 
     }
+
 }

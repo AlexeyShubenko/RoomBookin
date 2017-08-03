@@ -15,13 +15,13 @@ import java.util.List;
  */
 public class AllBooksGetController implements Controller {
 
-    private ServiceFactory serviceFactory;
+    private ServiceFactory serviceFactory = ServiceFactory.getInstance();
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         //Received all rooms from database
-        List<RoomDto> rooms = serviceFactory.getInstance().getRoomService().getAllRooms();
+        List<RoomDto> rooms = serviceFactory.getRoomService().getAllRooms();
         response.setContentType("application/json");
         //send data to client
         mapper.writeValue(response.getOutputStream(),rooms);

@@ -23,14 +23,14 @@ public class RoomServiceImpl implements RoomService {
     public void saveRoom(String name, Integer size) {
         try {
             EntityManager.getEntityManager().beginTransaction();
-            Room room = RoomDaoImpl.getRoomDao().getRoomByName(name);
+            Room room = RoomDaoImpl.getInstance().getRoomByName(name);
             //if room exist
             if (Objects.isNull(room)) {
                 Room newRoom = new Room();
                 newRoom.setName(name);
                 newRoom.setSize(size);
                 //else save
-                RoomDaoImpl.getRoomDao().saveRoom(newRoom);
+                RoomDaoImpl.getInstance().saveRoom(newRoom);
             } else {
                 throw new RoomExistException("Room already exist!");
             }
@@ -43,7 +43,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List<RoomDto> getAllRooms() {
-        List<Room> rooms = RoomDaoImpl.getRoomDao().getAllRooms();
+        List<Room> rooms = RoomDaoImpl.getInstance().getAllRooms();
 
         List<RoomDto> roomDtos = new ArrayList<>();
         if (rooms.size()>0){

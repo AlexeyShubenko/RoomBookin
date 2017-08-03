@@ -19,15 +19,14 @@ import java.util.List;
  */
 public class RoomDaoImpl implements RoomDao {
 
-    private static RoomDaoImpl roomDao = new RoomDaoImpl();
+    private static RoomDaoImpl instance = new RoomDaoImpl();
     private final String selectRoomByNum = "select * from room where name=?";
     private final String insertRoom = "insert into room(name,size) values(?,?)";
     private final String getAllBooksQuery = "select * from room";
 
-
     private RoomDaoImpl(){}
-    public static RoomDaoImpl getRoomDao() {
-        return roomDao;
+    public static RoomDaoImpl getInstance() {
+        return instance;
     }
 
     @Override

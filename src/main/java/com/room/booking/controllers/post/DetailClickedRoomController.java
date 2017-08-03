@@ -29,6 +29,7 @@ public class DetailClickedRoomController implements Controller {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
         ObjectMapper mapper = new ObjectMapper();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(request.getInputStream()));
         String addInfoJson = "";
@@ -52,12 +53,12 @@ public class DetailClickedRoomController implements Controller {
         }
 
         //Received all bookings of room
-        List<RoomBookingDto> roomBookingDtos = serviceFactory.getRoomBookingService().allRoomBookingsOfRoom(additionalInfo);
+        List<RoomBookingDto> allRoomBookingDtos = serviceFactory.getRoomBookingService().allRoomBookingsOfRoom(additionalInfo);
         response.setContentType("application/json");
 
         //send data to client
-        mapper.writeValue(response.getOutputStream(), roomBookingDtos);
-//        }
+        mapper.writeValue(response.getOutputStream(), allRoomBookingDtos);
+
 
     }
 

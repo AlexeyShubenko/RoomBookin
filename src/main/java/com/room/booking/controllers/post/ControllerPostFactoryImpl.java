@@ -19,17 +19,15 @@ public class ControllerPostFactoryImpl implements ControllerFactory {
         controllersMap.put("login", new LoginPostController());
         controllersMap.put("addemployee", new AddEmployeePostController());
         controllersMap.put("addroom",new AddRoomPostController());
-//        controllersMap.put("getRoomDetail", new DetailRoomInfoController());
         controllersMap.put("getDetailOfClickedRoom", new DetailClickedRoomController());
-//        controllersMap.put("", new IndexGetController());
         controllersMap.put("saveRoomBooking", new SaveRoomBookingPostController());
 }
 
     @Override
     public Controller getController(HttpServletRequest request) {
+        //TODO if url not exist
         String uri = request.getRequestURI();
         String[] urls = uri.split("/");
-        System.out.println(urls[urls.length-1]);
         if (urls.length==0){
             return controllersMap.get("login");
         }

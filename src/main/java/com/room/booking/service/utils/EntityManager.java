@@ -2,8 +2,6 @@ package com.room.booking.service.utils;
 
 import com.room.booking.exceptions.TransactionException;
 import org.postgresql.jdbc3.Jdbc3PoolingDataSource;
-import java.io.Closeable;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Objects;

@@ -18,7 +18,7 @@ import java.util.Objects;
  */
 public class LoginPostController implements Controller {
 
-    private ServiceFactory serviceFactory;
+    private ServiceFactory serviceFactory = ServiceFactory.getInstance();
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -37,7 +37,6 @@ public class LoginPostController implements Controller {
         }
         //TODO validation
 
-        serviceFactory = ServiceFactory.getInstance();
         Employee employee= serviceFactory.getLoginService().verifyEmployee(login, password);
         if(Objects.nonNull(employee)){
             //if employee is ADMIN

@@ -21,7 +21,7 @@ import java.util.Objects;
  */
 public class AddRoomPostController implements Controller {
 
-    private ServiceFactory serviceFactory;
+    private ServiceFactory serviceFactory = ServiceFactory.getInstance();
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -61,11 +61,10 @@ public class AddRoomPostController implements Controller {
             }
         }
 
-
         Integer size = Integer.valueOf(sizeValue);
         //save in DB
         try {
-            ServiceFactory.getInstance().getRoomService().saveRoom(number, size);
+            serviceFactory.getRoomService().saveRoom(number, size);
         }catch (RoomExistException roomEx){
             try {
                 request.setAttribute("error", roomEx.getMessage());

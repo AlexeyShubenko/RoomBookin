@@ -14,6 +14,7 @@ import java.util.Objects;
  * Created by Alexey on 19.07.2017.
  */
 public class AddRoomGetController implements Controller {
+
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
@@ -32,4 +33,5 @@ public class AddRoomGetController implements Controller {
             }
         }
     }
+
 }
